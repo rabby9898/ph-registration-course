@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import Cart from "../Cart/Cart";
+import toast from "react-hot-toast";
 
 const Cards = () => {
   const [courses, setCourses] = useState([]);
   const [cart, setCart] = useState([]);
   const [credit, setCredit] = useState(0);
   const [remaining, setRemaining] = useState(20);
+  const [total, setTotal] = useState(0);
 
   const handleSelectBtn = (course) => {
     const isExist = cart.find((item) => item === course.title);
     if (isExist) {
-      return alert("You Have Already Choose this course!");
+      return toast.error("You have already chose this course!");
     } else {
       const newCart = [...cart, course.title];
       setCart(newCart);
     }
     const newCredit = credit + course.credit;
     if (newCredit > 20) {
-      return alert("You Can not select more than 20 credit hour");
+      return toast.error("You can't select more than 20 credit hour!");
     } else {
       setCredit(newCredit);
     }
@@ -29,7 +31,11 @@ const Cards = () => {
     } else {
       setRemaining(remainingHour);
     }
+
+    const newTotal = total + course.price;
+    setTotal(newTotal);
   };
+
   useEffect(() => {
     fetch("courseData.json")
       .then((res) => res.json())
@@ -56,7 +62,7 @@ const Cards = () => {
             <hr />
           </div>
           <h3 className="text-xl text-[#1C1B1B] font-bold my-4">Course Name</h3>
-          <div className="mb-5">
+          <div className="mb-10">
             <ol>
               {cart.map((item, index) => (
                 <Cart key={index} index={index} item={item}></Cart>
@@ -67,6 +73,9 @@ const Cards = () => {
           <div>
             <h3 className="text-lg font-semibold my-5">
               Total Credit Hour: {credit}
+            </h3>
+            <h3 className="text-lg text-[#737272] font-semibold my-5">
+              Total Price: {total} USD
             </h3>
           </div>
         </div>
