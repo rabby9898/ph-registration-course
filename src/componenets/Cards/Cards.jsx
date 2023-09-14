@@ -43,8 +43,8 @@ const Cards = () => {
   }, []);
   return (
     <>
-      <div className="flex px-5 py-4 lg:px-32 lg:py-10">
-        <div className="w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="flex flex-col-reverse md:flex-row px-5 py-8 lg:px-32 lg:py-10 gap-6">
+        <div className="w-full md:w-4/6 lg:w-4/5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {courses.map((course) => (
             <Card
               key={course.id}
@@ -54,14 +54,16 @@ const Cards = () => {
           ))}
         </div>
 
-        <div className="w-1/5 h-fit bg-white shadow-xl rounded-xl p-5">
+        <div className="w-full md:w-1/3 lg:w-1/5 h-fit bg-white shadow-xl rounded-xl p-5">
           <div>
-            <h3 className="text-lg text-[#2F80ED] font-bold my-5">
+            <h3 className="text-base lg:text-lg text-[#2F80ED] font-bold my-5">
               Credit Hour Remaining {remaining} hr
             </h3>
             <hr />
           </div>
-          <h3 className="text-xl text-[#1C1B1B] font-bold my-4">Course Name</h3>
+          <h3 className="text-base lg:text-xl text-[#1C1B1B] font-bold my-4">
+            Course Name
+          </h3>
           <div className="mb-10">
             <ol>
               {cart.map((item, index) => (
@@ -71,10 +73,10 @@ const Cards = () => {
           </div>
           <hr />
           <div>
-            <h3 className="text-lg font-semibold my-5">
+            <h3 className="text-base lg:text-lg font-semibold my-5">
               Total Credit Hour: {credit}
             </h3>
-            <h3 className="text-lg text-[#737272] font-semibold my-5">
+            <h3 className="text-base lg:text-lg text-[#737272] font-semibold my-5">
               Total Price: {total} USD
             </h3>
           </div>
