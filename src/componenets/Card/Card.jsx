@@ -1,7 +1,7 @@
 import React from "react";
 import { FiDollarSign } from "react-icons/fi";
 import { BsBook } from "react-icons/bs";
-const Card = ({ course }) => {
+const Card = ({ course, handleSelectBtn }) => {
   const { id, image, title, description, price, credit } = course;
   return (
     <>
@@ -24,7 +24,10 @@ const Card = ({ course }) => {
             </div>
           </div>
 
-          <button className="btn btn-primary border-0 capitalize text-lg text-white bg-[#2F80ED] rounded-lg mb-4">
+          <button
+            onClick={() => handleSelectBtn(course, id)}
+            className="btn btn-primary border-0 capitalize text-lg text-white bg-[#2F80ED] rounded-lg mb-4"
+          >
             Select
           </button>
         </div>
