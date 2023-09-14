@@ -1,9 +1,12 @@
 import "./App.css";
+import Cards from "./componenets/Cards/Cards";
+import Header from "./componenets/Header/Header";
 
 function App() {
   return (
     <>
-      <h1>Vite + React</h1>
+      <Header></Header>
+      <Cards></Cards>
     </>
   );
 }
