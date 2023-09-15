@@ -76,6 +76,7 @@ const Cards = () => {
             <h3 className="text-base lg:text-lg font-semibold my-5">
               Total Credit Hour: {credit}
             </h3>
+            <hr />
             <h3 className="text-base lg:text-lg text-[#737272] font-semibold my-5">
               Total Price: {total} USD
             </h3>
