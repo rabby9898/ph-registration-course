@@ -29,7 +29,7 @@ const Card = ({ course, handleSelectBtn }) => {
           </div>
 
           <button
-            onClick={() => handleSelectBtn(course, id)}
+            onClick={() => handleSelectBtn(course)}
             className="btn btn-primary border-0 capitalize text-lg text-white bg-[#2F80ED] rounded-lg mb-4"
           >
             Select

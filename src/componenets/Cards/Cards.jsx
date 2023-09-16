@@ -11,29 +11,29 @@ const Cards = () => {
   const [total, setTotal] = useState(0);
 
   const handleSelectBtn = (course) => {
-    const isExist = cart.find((item) => item === course.title);
+    const isExist = cart.find((item) => item.id === course.id);
     if (isExist) {
       return toast.error("You have already chose this course!");
     } else {
-      const newCart = [...cart, course.title];
-      setCart(newCart);
-    }
-    const newCredit = credit + course.credit;
-    if (newCredit > 20) {
-      return toast.error("You can't select more than 20 credit hour!");
-    } else {
-      setCredit(newCredit);
-    }
-    const remainingHour = 20 - newCredit;
+      const newCredit = credit + course.credit;
+      if (newCredit > 20) {
+        return toast.error("You can't select more than 20 credit hour!");
+      } else {
+        setCredit(newCredit);
 
-    if (remainingHour < 0) {
-      setRemaining(0);
-    } else {
-      setRemaining(remainingHour);
-    }
+        const remainingHour = 20 - newCredit;
 
-    const newTotal = total + course.price;
-    setTotal(newTotal);
+        if (remainingHour < 0) {
+          setRemaining(0);
+        } else {
+          setRemaining(remainingHour);
+        }
+        const newCart = [...cart, course];
+        setCart(newCart);
+        const newTotal = total + course.price;
+        setTotal(newTotal);
+      }
+    }
   };
 
   useEffect(() => {
@@ -65,11 +65,11 @@ const Cards = () => {
             Course Name
           </h3>
           <div className="mb-10">
-            <ol>
+            <div>
               {cart.map((item, index) => (
                 <Cart key={index} index={index} item={item}></Cart>
               ))}
-            </ol>
+            </div>
           </div>
           <hr />
           <div>
